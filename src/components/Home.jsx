@@ -17,13 +17,9 @@ const Home = () => {
   const fetchUserData = async () => {
     if (userSelector) return;
     try {
-      const response = await axios.post(
-        BASE_URL + PROFILE_URL,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get(BASE_URL + PROFILE_URL, {
+        withCredentials: true,
+      });
 
       dispatch(addUser(response?.data?.data));
       if (location?.pathname === "/login" || location?.pathname === "/signup")
